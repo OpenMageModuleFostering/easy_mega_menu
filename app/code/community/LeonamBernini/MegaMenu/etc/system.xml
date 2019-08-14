@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <tabs>
+        <leonambernini translate="label">
+            <label>Leonam Bernini</label>
+            <sort_order>100</sort_order>
+        </leonambernini>
+    </tabs>
+    <sections>
+        <megamenu translate="label" module="megamenu">
+            <label>Mega Menu</label>
+            <class>megamenu-section</class>
+            <tab>leonambernini</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>9999</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <general translate="label">
+                    <label>General</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <enabled translate="label comment">
+                            <label>Enable</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>							
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </enabled>
+                        <levels translate="label comment">
+                            <label>Levels</label>
+                            <frontend_type>select</frontend_type>
+                            <comment>amount of sublevels that appears</comment>
+                            <source_model>megamenu/source_qtyLevels</source_model>						
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </levels>
+                        <action translate="label comment">
+                            <label>Action</label>
+                            <frontend_type>select</frontend_type>
+                            <comment>activate when you click or hover</comment>
+                            <source_model>megamenu/source_action</source_model>						
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </action>
+                        <home_link translate="label comment">
+                            <label>Show home button</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>					
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </home_link>
+                        <home_link_title translate="label comment">
+                            <label>Button home title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </home_link_title>
+                        <featured_img  translate="label comment">
+                            <label>Show image</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>	
+                            <comment>allow viewing of featured picture on sublevel</comment>				
+                            <sort_order>6</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </featured_img>
+                        <box_center  translate="label comment">
+                            <label>Add box to align center?</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>	
+                            <comment>add box with class "center" for config in css.</comment>				
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </box_center>
+                    </fields>
+                </general>
+                <levels translate="label">
+                    <label>Levels</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <box_width translate="label comment">
+                            <label>Width of Box</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>in px or 0 for editing in css</comment>
+                            <validate>required-entry validate-number</validate>					
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </box_width>
+                        <item_width translate="label comment">
+                            <label>Width of Items</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>in px or 0 for editing in css</comment>
+                            <validate>required-entry validate-number</validate>					
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </item_width>
+                        <display translate="label comment">
+                            <label>Display</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>megamenu/source_displaySublevel</source_model>						
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </display>
+                        <invert_box translate="label comment">
+                            <label>Reverse side opening level</label>
+                            <frontend_type>text</frontend_type>
+                            <comment>from the number indicated an 'open-left' class will be added, making the sublevel open to left</comment>	
+                            <validate>required-entry validate-number</validate>						
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </invert_box>
+                    </fields>
+                </levels>
+            </groups>
+        </megamenu>
+    </sections>
+</config>

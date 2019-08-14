@@ -1,0 +1,60 @@
+<?php $_menu = $this->getHtml('level-top') ?>
+<?php $showHomeButton   = Mage::getStoreConfig("megamenu/general/home_link"); ?>
+<?php $homeButtonTitle  = Mage::getStoreConfig("megamenu/general/home_link_title"); ?>
+<?php $action           = Mage::getStoreConfig("megamenu/general/action"); ?>
+<?php $classCenter      = Mage::getStoreConfig("megamenu/general/box_center"); ?>
+
+<?php if($_menu): ?>
+<nav id="nav" class="nav-megamenu">
+    <?php if( $classCenter ): ?>
+    <div class="center">
+    <?php endif; ?>
+    <ol class="nav-megamenu">
+        <?php if( $showHomeButton ): ?>
+        <li id="mega-menu-home-link" class="level0"><a href="<?php echo $this->getUrl('') ?>" title="" class="mega-menu-link level0 transition"><?php echo $homeButtonTitle ?></a></li>
+        <?php endif; ?>
+        <?php echo $_menu ?>
+    </ol>
+    <?php if( $classCenter ): ?>
+    </div>
+    <?php endif; ?>
+</nav>
+
+<?php if( $action == 'click' ): ?>
+
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        
+        var megaMenuHideElement = function( $element ){
+            $element.slideUp(200);
+        }; 
+        var $buttons = jQuery('.mega-menu-link');
+        var $children = jQuery('.box-children');
+        if( $buttons.length ){            
+
+            $buttons.live( 'click', function(){
+                var $this       = jQuery(this);
+                var dataLevel   = $this.attr('data-level');
+                var $child      = $this.parent('li.'+dataLevel).children('.box-'+dataLevel);
+
+                if( $child.length ){
+                    if( $child.is(':visible') ){
+                        return true;
+                    }else{
+                        megaMenuHideElement( $children );
+                        $child.slideDown(1000);
+                        return false;
+                    }
+                }
+            });
+            
+            $buttons.parent('li').mouseleave( function(){
+                megaMenuHideElement( $children );
+            });
+        }
+    });
+</script>
+
+<?php endif; ?>
+
+<?php endif; ?>

@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <LeonamBernini_MegaMenu>
+            <version>1.0.1</version>
+        </LeonamBernini_MegaMenu>
+    </modules>
+    
+    <frontend>
+        <routers>
+            <megamenu>
+                <use>standard</use>
+                <args>
+                    <frontName>megamenu</frontName>
+                    <module>LeonamBernini_MegaMenu</module>
+                </args>
+            </megamenu>
+        </routers>
+        <layout>
+            <updates>
+                <megamenu>
+                    <file>leonambernini/megamenu.xml</file>
+                </megamenu>
+            </updates>
+        </layout>
+    </frontend>
+    
+    <global>
+        <blocks>
+            <megamenu>
+                <class>LeonamBernini_MegaMenu_Block</class>
+            </megamenu>
+            <page>
+                <rewrite>
+                    <html_topmenu>LeonamBernini_MegaMenu_Block_Html_Topmenu</html_topmenu>
+                </rewrite>
+            </page>
+        </blocks>
+        
+        <helpers>
+            <megamenu>
+                <class>LeonamBernini_MegaMenu_Helper</class>
+            </megamenu>
+        </helpers>
+        
+        <models>
+            <megamenu>
+                <class>LeonamBernini_MegaMenu_Model</class>
+                <resourceModel>megamenu_mysql4</resourceModel>
+            </megamenu>
+            <megamenu_mysql4>
+                <class>LeonamBernini_MegaMenu_Model_Mysql4</class>
+                <entities>
+                    <megamenu>
+                        <table>lb_megamenu</table>
+                    </megamenu>
+                </entities>
+            </megamenu_mysql4>
+        </models>
+    </global>
+    
+    <adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <megamenu>
+                                            <title>MegaMenu Settings - NEX</title>
+                                        </megamenu>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+    
+    <admin>
+        <routers>
+            <megamenu>
+                <use>admin</use>
+                <args>
+                    <module>LeonamBernini_MegaMenu</module>
+                    <frontName>megamenu</frontName>
+                </args>
+            </megamenu>
+        </routers>
+    </admin>
+    
+    <default>
+        <megamenu>
+            <general>
+                <enabled>0</enabled>
+                <levels>1</levels>
+                <action>hover</action>
+                <home_link>1</home_link>
+                <home_link_title>home</home_link_title>
+                <featured_img>1</featured_img>
+                <box_center>1</box_center>
+            </general>
+            <levels>
+                <box_width>600</box_width>
+                <item_width>0</item_width>
+                <display>inline-block</display>
+                <invert_box>7</invert_box>
+            </levels>
+        </megamenu>
+    </default>
+    
+</config>

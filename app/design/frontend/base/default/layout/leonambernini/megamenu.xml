@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <action method="addCss"><stylesheet>leonam_bernini/megamenu/css/megamenu.css</stylesheet></action>
+        </reference>
+        <reference name="catalog.topnav">
+            <action method="setTemplate"><template>leonambernini/megamenu/topmenu.phtml</template></action>
+            <block type="megamenu/html_topmenu_renderer" name="leonambernini.megamenu.renderer" template="leonambernini/megamenu/topmenu/renderer.phtml"/>
+        </reference>
+    </default>
+</layout>

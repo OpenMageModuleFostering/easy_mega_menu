@@ -1,0 +1,62 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 24/10/2014, 21:35:27
+    Author     : Leonam
+*/
+.nav-megamenu{ position: relative; z-index: 999999; }
+
+.transition{ -webkit-transition: 150ms all linear 0s; -moz-transition: 150ms all linear 0s; -o-transition: 150ms all linear 0s; transition: 150ms all linear 0s; }
+.center{ display: block; margin: 0 auto; max-width: 1200px; min-width: 1200px; width: 100%; }
+
+.nav-megamenu li.level0,
+.nav-megamenu .box-children ul,
+.levels-display-inline-block > li{ display: inline-block; vertical-align: top; /* Setting a common base */ margin: 0; padding: 0; /* For IE 7 */ zoom: 1; *display: inline; }
+.levels-display-block > li{ display: block; }
+
+.nav-megamenu li{ position: relative; }
+
+.nav-megamenu li.level0:hover .box-level0,
+.nav-megamenu li.level1:hover .box-level1,
+.nav-megamenu li.level2:hover .box-level2,
+.nav-megamenu li.level3:hover .box-level3{ display: block; }
+
+.nav-megamenu .box-children{ display: none; padding: 15px; position: absolute; }
+
+.nav-megamenu .box-level0{ background-color: #fff; border-radius: 0 0 5px 5px; left: 0; top: 50px; min-width: 300px; z-index: 10; }
+.nav-megamenu .open-left .box-level0{ left: auto; right: 0; }
+.nav-megamenu .box-level1{ background-color: #000; border-radius: 0 0 5px 5px; right: 0; top: 50px; z-index: 20; }
+.nav-megamenu .open-left .box-level1{ left: 0; right: auto; }
+.nav-megamenu .box-level2{ background-color: #fff; left: 250px; top: 0; z-index: 30; }
+
+.nav-megamenu .box-children ul{ position: relative; }
+.nav-megamenu .box-children ul.have-mega-menu-item{ max-width: 270px; }
+
+/* BOX MEGA MENU IMAGEM */
+.nav-megamenu .mega-menu-item{ float: right; max-height: 300px; max-width: 300px; padding-left: 5px; }
+.nav-megamenu .mega-menu-item a{ display: block; }
+.nav-megamenu .mega-menu-item img{ display: block; max-height: 100%; max-width: 100%; }
+
+/* BOX MEGA MENU IMAGEM */
+.nav-megamenu .mega-menu-product-item{ float: right; width: 250px; padding-left: 5px; }
+.nav-megamenu .mega-menu-product-item a{ border-left: 1px solid #008AFF; display: block; padding: 0 0 0 15px; text-decoration: none; }
+.nav-megamenu .mega-menu-product-item a:hover .mega-menu-product-name{ color: #0413C0; }
+.nav-megamenu .mega-menu-product-item .mega-menu-product-img{ display: block; max-width: 100%; }
+.nav-megamenu .mega-menu-product-item .mega-menu-product-name{ color: #008AFF; display: block; font: 400 13px/15px 'Tahoma', sans-serif; letter-spacing: -1px; padding: 5px 0; }
+.nav-megamenu .mega-menu-product-item .mega-menu-product-value{ color: #084; display: block; font: 400 15px/18px 'Tahoma', sans-serif; letter-spacing: -1px; padding: 5px 0; }
+
+
+
+.nav-megamenu li.level0 .mega-menu-link{ display: block; font: 400 16px/20px 'Tahoma', sans-serif; padding: 15px 20px; text-decoration: none; }
+
+.nav-megamenu li.level0 > .mega-menu-link{ color: #060606; }
+.nav-megamenu li.level0 > .mega-menu-link:hover{ color: #007ED1; }
+
+.nav-megamenu li.level1 > .mega-menu-link{ color: #060606; }
+.nav-megamenu li.level1 > .mega-menu-link:hover{ color: #007ED1; }
+
+.nav-megamenu li.level2 > .mega-menu-link{ color: #fff; }
+.nav-megamenu li.level2 > .mega-menu-link:hover{ color: #e6ffff; }

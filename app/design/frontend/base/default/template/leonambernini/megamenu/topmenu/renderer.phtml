@@ -1,0 +1,147 @@
+<?php
+// GET ALL MEGA MENU ITEMS
+$today = date("Y-m-d");
+$megaMenu = Mage::getModel('megamenu/megamenu')
+                    ->getCollection()
+                    ->addFieldToFilter(
+                            array('stores', 'stores'),
+                            array(
+                                    array('finset'=>Mage::app()->getStore()->getId()), 
+                                    array('eq'=>'0'))
+                    )
+                    ->addFieldToFilter('start_time', array( array('lteq' => $today), array('null' => true)))
+                    ->addFieldToFilter('end_time', array(array('gteq' => $today), array('null' => true)))
+                    ->addFieldToFilter('status', array('eq' => '1'))
+                    ->setOrder("id","ASC");
+$megaItems = array();
+foreach ( $megaMenu as $item ){
+    $megaItems[ 'category-node-' . $item->getCategory() ]['id']         = $item->getId();
+    $megaItems[ 'category-node-' . $item->getCategory() ]['title']      = $item->getTitle();
+    $megaItems[ 'category-node-' . $item->getCategory() ]['filename']   = $item->getFilename();
+    $megaItems[ 'category-node-' . $item->getCategory() ]['url']        = ( strpos( $item->getUrl(), 'http://' ) > -1 || strpos( $item->getUrl(), 'https://' )  > -1 ) ? $item->getUrl() : 'http://' . $item->getUrl(); 
+    $megaItems[ 'category-node-' . $item->getCategory() ]['target']     = $item->getTarget();
+    $megaItems[ 'category-node-' . $item->getCategory() ]['product_id'] = $item->getProductId();
+    $megaItems[ 'category-node-' . $item->getCategory() ]['block_id']   = $item->getBlockId();
+}
+
+// BEGGIN THE HTML RETURN CODE
+$html = '';
+
+$children = $menuTree->getChildren();
+$parentLevel = $menuTree->getLevel();
+$childLevel = is_null($parentLevel) ? 0 : $parentLevel + 1;
+
+$counter = 1;
+$counterCols = 1;
+$childrenCount = $levels;
+
+$parentPositionClass = $menuTree->getPositionClass();
+$itemPositionClassPrefix = $parentPositionClass ? $parentPositionClass . '-' : 'nav-';
+
+// LOOPING LEVELS OF MENU
+foreach ($children as $child) {
+    
+    // SETTING CONFIGS MEGA MENU
+    $levels     = Mage::getStoreConfig("megamenu/general/levels");
+    $action     = Mage::getStoreConfig("megamenu/general/action");
+    $showImage  = Mage::getStoreConfig("megamenu/general/featured_img");
+    $display    = 'levels-display-' . Mage::getStoreConfig("megamenu/levels/display");
+    $cols       = Mage::getStoreConfig("megamenu/levels/cols_sublevel");
+    $id         = $child->getId();
+    
+    $child->setLevel($childLevel);
+    $child->setIsFirst($counter == 1);
+    $child->setIsLast($counter == $childrenCount);
+    $child->setPositionClass($itemPositionClassPrefix . $counter);
+    
+    $widthItems = '';
+    if ( $childLevel > 0 ) {
+        $widthItems = Mage::getStoreConfig("megamenu/levels/item_width");
+        $widthItems = ( $widthItems == 0 ) ? '' : 'style="width: ' . $widthItems . 'px;"';
+    }
+    
+    $widthBox = '';
+    if ( $childLevel == 0 ) {
+        $widthBox   = Mage::getStoreConfig("megamenu/levels/box_width");
+        $widthBox   = ( $widthBox == 0 ) ? '' : 'style="width: ' . $widthBox . 'px;"';
+    }
+    
+    $nextChildLevel = $childLevel + 1;
+
+    $outermostClassCode = 'level'. $childLevel;
+    $_hasChildren = ( $child->hasChildren() && ( $nextChildLevel <= $levels ) ) ? 'has-children' : '';
+
+    if( $counter > Mage::getStoreConfig("megamenu/levels/invert_box") ){ $child->setClass('open-left'); }
+    $html .= '<li '. $this->_getRenderedMenuItemAttributes($child) .' '.$widthItems.'>';
+    
+    $html .= '<a href="'. $child->getUrl() .'" data-level="'. $outermostClassCode .'" class="transition mega-menu-link ' . $outermostClassCode .' '. $_hasChildren .'">'. $this->escapeHtml($this->__($child->getName())) .'</a>';
+
+    if (!empty($childrenWrapClass)) {
+        $html .= '<span class="'. $childrenWrapClass .'">';
+    }
+
+    if (!empty($_hasChildren) ) {
+        
+        $html .= '<span class="box-children box-' . $outermostClassCode . '" id="box-chield-' . $id .'" '.$widthBox.'>';
+        //$htmlChild  = '<ul class="level'. $childLevel .' ' . $display . '">';
+        $htmlChild = $this->render($child, $childrenWrapClass);
+        //$htmlChild .= '</ul>';  
+        
+        if( $showImage && ( $megaItems && isset( $megaItems[$id] ) ) ){
+            $html .= '<ul class="have-mega-menu-item level'. $childLevel .' ' . $display . '">';
+            $html .= $htmlChild;
+            $html .= '</ul>'; 
+            
+            $printImage   = false;
+            $printBlock   = false;
+            $printProduct = false;
+            
+            /* print de product element */
+            if( $megaItems[$id]['product_id'] > 0 ){
+                //$product = Mage::getModel('catalog/product')->load($megaItems[$id]['product_id']);
+                $product = Mage::getModel('catalog/product')->load($megaItems[$id]['product_id']);
+                if( $product ){
+                    $html .= '<span class="mega-menu-product-item" id="mega-menu-item' . $megaItems[$id]['id'] . '">';
+                    $html .= '<a href="' . $product->getProductUrl() . '" title="' . $product->getName() . '" class="mega-menu-product-img">';
+                    $html .= '<img src="' . Mage::helper('catalog/image')->init($product, 'image') . '" alt="' . $product->getName() . '" title="' . $product->getName() . '" class="mega-menu-product-img"/>';
+                    $html .= '<b class="mega-menu-product-name transition">' . $product->getName() . '</b>';
+                    $html .= '<span class="mega-menu-product-value">' . Mage::helper('core')->currency($product->getPrice()) . '</span>';
+                    $html .= '</a>';
+                    $html .= '</span>';
+                    $printProduct = true;
+                }
+            }
+            
+            /* print de block element */
+            if( !$printProduct && !$printImage && $megaItems[$id]['block_id'] != '' ){
+                if( Mage::getModel('cms/block')->load($megaItems[$id]['block_id'])->getIsActive() ){
+                    $html .= '<span class="mega-menu-block-item" id="mega-menu-item' . $megaItems[$id]['id'] . '">';
+                    $html .= $this->getLayout()->createBlock('cms/block')->setBlockId($megaItems[$id]['block_id'])->toHtml();
+                    $html .= '</span>';
+                    $printBlock = true;
+                }
+            }
+            
+            /* print de image element */
+            if( !$printBlock && !$printProduct ){
+                $html .= '<span class="mega-menu-item" id="mega-menu-item-' . $megaItems[$id]['id'] . '">';
+                $html .= '<a href="' . $megaItems[$id]['url'] . '" title="' . $megaItems[$id]['title'] . '" target="' . $megaItems[$id]['target'] . '"><img class="mega-menu-item-img" src="' . Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . $megaItems[$id]['filename'] . '" title="' . $megaItems[$id]['title'] . '" alt="' . $megaItems[$id]['title'] . '"></a>';
+                $html .= '</span>';
+            }
+        }else{
+            $html .= '<ul class="level'. $childLevel .' ' . $display . '">';
+            $html .= $htmlChild;
+            $html .= '</ul>'; 
+        }      
+        $html .= '</span>';
+    }
+
+    if (!empty($childrenWrapClass)) {
+        $html .= '</span>';
+    }
+
+    $html .= '</li>';
+    $counter++;
+}
+
+return $html;
