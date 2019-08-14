@@ -5,11 +5,11 @@
 <?php $classCenter      = Mage::getStoreConfig("megamenu/general/box_center"); ?>
 
 <?php if($_menu): ?>
-<nav id="nav" class="nav-megamenu">
+<nav id="nav-mega-menu" class="nav-megamenu">
     <?php if( $classCenter ): ?>
     <div class="center">
     <?php endif; ?>
-    <ol class="nav-megamenu">
+    <ol class="list-megamenu">
         <?php if( $showHomeButton ): ?>
         <li id="mega-menu-home-link" class="level0"><a href="<?php echo $this->getUrl('') ?>" title="" class="mega-menu-link level0 transition"><?php echo $homeButtonTitle ?></a></li>
         <?php endif; ?>

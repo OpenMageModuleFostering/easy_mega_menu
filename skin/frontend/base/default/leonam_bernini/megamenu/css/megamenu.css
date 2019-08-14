@@ -9,14 +9,17 @@ and open the template in the editor.
 */
 .nav-megamenu{ position: relative; z-index: 999999; }
 
+.nav-megamenu li.level0,
+.nav-megamenu li.level0:hover,
 .transition{ -webkit-transition: 150ms all linear 0s; -moz-transition: 150ms all linear 0s; -o-transition: 150ms all linear 0s; transition: 150ms all linear 0s; }
-.center{ display: block; margin: 0 auto; max-width: 1200px; min-width: 1200px; width: 100%; }
+.center{ display: block; margin: 0 auto; max-width: 930px; min-width: 930px; width: 100%; }
 
 .nav-megamenu li.level0,
 .nav-megamenu .box-children ul,
 .levels-display-inline-block > li{ display: inline-block; vertical-align: top; /* Setting a common base */ margin: 0; padding: 0; /* For IE 7 */ zoom: 1; *display: inline; }
 .levels-display-block > li{ display: block; }
 
+.nav-megamenu .list-megamenu{ text-align: left; }
 .nav-megamenu li{ position: relative; }
 
 .nav-megamenu li.level0:hover .box-level0,
@@ -26,7 +29,8 @@ and open the template in the editor.
 
 .nav-megamenu .box-children{ display: none; padding: 15px; position: absolute; }
 
-.nav-megamenu .box-level0{ background-color: #fff; border-radius: 0 0 5px 5px; left: 0; top: 50px; min-width: 300px; z-index: 10; }
+.nav-megamenu li.level0:hover{ background-color: #fff; }
+.nav-megamenu .box-level0{ background-color: #fff; border-radius: 0 0 5px 5px; box-shadow: 0 0 10px 0 #000; left: 0; top: 50px; min-width: 300px; z-index: 10; }
 .nav-megamenu .open-left .box-level0{ left: auto; right: 0; }
 .nav-megamenu .box-level1{ background-color: #000; border-radius: 0 0 5px 5px; right: 0; top: 50px; z-index: 20; }
 .nav-megamenu .open-left .box-level1{ left: 0; right: auto; }
