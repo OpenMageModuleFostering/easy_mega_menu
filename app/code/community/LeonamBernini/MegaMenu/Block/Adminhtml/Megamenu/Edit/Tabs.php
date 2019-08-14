@@ -8,7 +8,7 @@ class LeonamBernini_MegaMenu_Block_Adminhtml_Megamenu_Edit_Tabs extends Mage_Adm
         parent::__construct();
         $this->setId('megamenu_tabs');
         $this->setDestElementId('edit_form');
-        $this->setTitle(Mage::helper('megamenu')->__('Item Information'));
+        $this->setTitle(Mage::helper('megamenu')->__('Banner Information'));
     }
 
     protected function _beforeToHtml()

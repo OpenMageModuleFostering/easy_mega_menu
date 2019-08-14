@@ -2,7 +2,7 @@
 <config>
     <modules>
         <LeonamBernini_MegaMenu>
-            <version>1.0.1</version>
+            <version>2.0.1</version>
         </LeonamBernini_MegaMenu>
     </modules>
     
@@ -23,6 +23,16 @@
                 </megamenu>
             </updates>
         </layout>
+        
+        <translate>
+            <modules>
+                <LeonamBernini_MegaMenu>
+                    <files>
+                        <default>LeonamBernini_MegaMenu.csv</default>
+                    </files>
+                </LeonamBernini_MegaMenu>
+            </modules>
+        </translate>
     </frontend>
     
     <global>
@@ -79,6 +89,16 @@
                 </admin>
             </resources>
         </acl>
+        
+        <translate>
+            <modules>
+                <LeonamBernini_MegaMenu>
+                    <files>
+                        <default>LeonamBernini_MegaMenu.csv</default>
+                    </files>
+                </LeonamBernini_MegaMenu>
+            </modules>
+        </translate>
     </adminhtml>
     
     <admin>

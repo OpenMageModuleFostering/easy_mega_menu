@@ -57,6 +57,18 @@ class LeonamBernini_MegaMenu_Block_Adminhtml_Megamenu_Edit_Tab_Form extends Mage
                     'value' => '_new',
                     'label' => Mage::helper('megamenu')->__('New'),
                 ),
+                array(
+                    'value' => '_parent',
+                    'label' => Mage::helper('megamenu')->__('Parent'),
+                ),
+                array(
+                    'value' => '_self',
+                    'label' => Mage::helper('megamenu')->__('Self'),
+                ),
+                array(
+                    'value' => '_top',
+                    'label' => Mage::helper('megamenu')->__('Top'),
+                ),
             ),
         ));
 
@@ -103,7 +115,7 @@ class LeonamBernini_MegaMenu_Block_Adminhtml_Megamenu_Edit_Tab_Form extends Mage
         ));
 
         $fieldset->addField('end_time', 'date', array(
-            'label' => Mage::helper('fullbanner')->__('End date'),
+            'label' => Mage::helper('megamenu')->__('End date'),
             'format' =>'yyyy-MM-dd',
             'required' => false,
             'image' => $image_calendar,
@@ -113,8 +125,8 @@ class LeonamBernini_MegaMenu_Block_Adminhtml_Megamenu_Edit_Tab_Form extends Mage
 
         if ( Mage::getSingleton('adminhtml/session')->getSlideshowData() )
         {
-            $form->setValues(Mage::getSingleton('adminhtml/session')->getFullbannerData());
-            Mage::getSingleton('adminhtml/session')->setFullbannerData(null);
+            $form->setValues(Mage::getSingleton('adminhtml/session')->getMegamenuData());
+            Mage::getSingleton('adminhtml/session')->setMegamenuData(null);
         } elseif ( Mage::registry('megamenu_data') ) {
             $form->setValues(Mage::registry('megamenu_data')->getData());
         }
