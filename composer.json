@@ -1,7 +1,7 @@
 {
     "name": "OpenMageModuleFostering/easy_mega_menu",
     "type": "magento-module",
-    "license": "MIT-License",
+    "license": "Academic-Free-License-3.0",
     "homepage": "",
     "description": "Easy Mega Menu extension for magento",
     "authors": [

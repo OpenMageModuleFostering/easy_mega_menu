@@ -27,13 +27,17 @@ and open the template in the editor.
 .nav-megamenu li.level2:hover .box-level2,
 .nav-megamenu li.level3:hover .box-level3{ display: block; }
 
+.nav-megamenu li.level0 ul,
 .nav-megamenu .box-children{ display: none; padding: 15px; position: absolute; }
 
 .nav-megamenu li.level0:hover{ background-color: #fff; }
+.nav-megamenu ul.level0,
 .nav-megamenu .box-level0{ background-color: #fff; border-radius: 0 0 5px 5px; box-shadow: 0 0 10px 0 #000; left: 0; top: 50px; min-width: 300px; z-index: 10; }
 .nav-megamenu .open-left .box-level0{ left: auto; right: 0; }
-.nav-megamenu .box-level1{ background-color: #000; border-radius: 0 0 5px 5px; right: 0; top: 50px; z-index: 20; }
+.nav-megamenu ul.level1,
+.nav-megamenu .box-level1{ background-color: #000; border-radius: 0 0 5px 5px; left: 0; top: 35px; z-index: 20; }
 .nav-megamenu .open-left .box-level1{ left: 0; right: auto; }
+.nav-megamenu ul.level2,
 .nav-megamenu .box-level2{ background-color: #fff; left: 250px; top: 0; z-index: 30; }
 
 .nav-megamenu .box-children ul{ position: relative; }
@@ -54,13 +58,20 @@ and open the template in the editor.
 
 
 
+.nav-megamenu li.level0 a,
 .nav-megamenu li.level0 .mega-menu-link{ display: block; font: 400 16px/20px 'Tahoma', sans-serif; padding: 15px 20px; text-decoration: none; }
 
+.nav-megamenu li.level0 .level-top,
 .nav-megamenu li.level0 > .mega-menu-link{ color: #060606; }
+.nav-megamenu li.level0 .level-top:hover,
 .nav-megamenu li.level0 > .mega-menu-link:hover{ color: #007ED1; }
 
+.nav-megamenu li.level1 a,
 .nav-megamenu li.level1 > .mega-menu-link{ color: #060606; }
+.nav-megamenu li.level1 a:hover,
 .nav-megamenu li.level1 > .mega-menu-link:hover{ color: #007ED1; }
 
+.nav-megamenu li.level2 a,
 .nav-megamenu li.level2 > .mega-menu-link{ color: #fff; }
+.nav-megamenu li.level2 a:hover,
 .nav-megamenu li.level2 > .mega-menu-link:hover{ color: #e6ffff; }
